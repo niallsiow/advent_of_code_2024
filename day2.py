@@ -33,15 +33,16 @@ def count_safe_reports_with_dampener(reports):
         if is_safe_report(report):
             safe_reports += 1
         else:
-            # check report with dampener
-            # call is_safe_report with indexes missing
-            # if true can add and continue
-            # if false keep checking
-            pass
+            for i in range(len(report)):
+                report_copy = report[:]
+                del report_copy[i]
+                if is_safe_report(report_copy):
+                    safe_reports += 1
+                    break
     return safe_reports
 
 
-input_filename = 'day2_input.txt'
+input_filename = 'inputs/day2.txt'
 
 reports = []
 
@@ -53,3 +54,5 @@ with open(input_filename) as file:
         reports.append(report)
 
 print(f'safe reports = {count_safe_reports(reports)}')
+
+print(f'safe reports with dampener = {count_safe_reports_with_dampener(reports)}')
