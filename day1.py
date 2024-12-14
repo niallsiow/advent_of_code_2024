@@ -30,7 +30,7 @@ def calculate_simularity_score(list1, list2):
     return score
 
 
-input_file = "inputs/day1.txt"
+input_file = 'inputs/day1.txt'
 
 list1 = []
 list2 = []
